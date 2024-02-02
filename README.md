@@ -1,6 +1,6 @@
 # Semester-Project
 
-## Team Name: 
+## Team Name: Tripify
 ## Group #: 6
 ## Contributors: Kevin Li, Shawn Zhu, Yurock Heo
 ## TA: Johnny
