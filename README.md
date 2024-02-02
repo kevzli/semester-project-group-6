@@ -1,8 +1,8 @@
 # Semester-Project
 
-## Team Name: <Insert Here>
+## Team Name: 
 ## Group #: 6
 ## Contributors: Keven Li, Shawn Zhu, Yurock Heo
-## TA: 
+## TA: Johnny
 
 ## Instructions/Link to access: <insert here>
