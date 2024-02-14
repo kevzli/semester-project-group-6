@@ -1,14 +1,17 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { AuthUserProvider } from "../firebase/auth";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Head>
-        <title>Tripify</title>
-      </Head>
-      <Component {...pageProps} />
+      <AuthUserProvider>
+        <Head>
+          <title>Tripify</title>
+        </Head>
+        <Component {...pageProps} />
+      </AuthUserProvider>
     </>
   );
 }
