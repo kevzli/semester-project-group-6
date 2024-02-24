@@ -27,13 +27,13 @@ export default function Home() {
 
   useEffect(() => {
     if (!isLoading && authUser) {
-      // router.push('/map');
+      router.push('/dashboard');
     }
   }, [authUser, isLoading]);
 
   const uiConfig = {
     signInFlow: 'popup',
-    signInSuccessUrl: '/map',
+    signInSuccessUrl: '/dashboard',
     signInOptions: [
       EmailAuthProvider.PROVIDER_ID,
       GoogleAuthProvider.PROVIDER_ID
