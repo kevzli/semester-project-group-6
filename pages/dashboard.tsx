@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Profile from '../components/profile';
 
+
 export default function Dashboard() {
 
     
@@ -16,7 +17,7 @@ export default function Dashboard() {
 
         <main>
             <Profile/>
-            
+            <Trending/>
         </main>
         </>
     )

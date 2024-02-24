@@ -10,7 +10,7 @@ export default function Profile(Sidebar){
             src={DefUserImg}
             alt="purpleDot"
             layout="fixed"
-            onClick={}
+            //onClick={}
         />
         </div>
     )
