@@ -1,0 +1,71 @@
+/* This is the CSS Module file where you define styles for the Trending component */
+.trending {
+    text-align: center;
+    padding: 4rem 0;
+  }
+  
+  .heading {
+    margin-bottom: 2rem;
+  }
+  
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .card {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cardHeader {
+    position: relative;
+  }
+  
+  .cardImg {
+    width: 100%;
+    height: auto;
+  }
+  
+  .cardTitle {
+    font-size: 1.25rem;
+    margin: 0.5rem 0;
+  }
+  
+  .cardLocation {
+    color: #888; /* Example color - replace with your own variable or color code */
+    font-size: 0.875rem;
+  }
+  
+  .cardBody {
+    padding: 1rem;
+  }
+  
+  .cardInfo {
+    margin: 1rem 0;
+    color: #333; /* Example color - replace with your own variable or color code */
+  }
+  
+  .cardPricing {
+    font-weight: bold;
+  }
+  
+  .cardButton {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 10px;
+  }
+  
+  .cardButton:hover {
+    background-color: darkorange;
+  }
+  

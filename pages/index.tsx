@@ -66,7 +66,9 @@ export default function Home() {
             <h1>Tripify</h1>
             <p style={{ fontFamily: "'Roboto', sans-serif", fontSize: "25px", fontWeight: "400" }}>don’t let your plans die in the chat</p>
             <div className={styles.buttons}>
-              <button onClick = {() => setLogin(true)}className={styles.signupButton}>Sign up</button>
+              <button className={styles.signupButton}><Link href="/map">Sign up</Link></button>
+
+              <button className={styles.loginButton}><Link href="/Trending">Login</Link></button>
             </div>
           </div>
           <div className={styles.container}>
