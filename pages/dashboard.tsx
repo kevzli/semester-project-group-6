@@ -7,6 +7,7 @@ import useAuth from '../firebase/auth'
 import { useEffect } from 'react';
 import useFirebaseAuth from '../firebase/auth';
 import router from 'next/router';
+import Trending from '../components/Trending'
 
 
 export default function Dashboard() {
@@ -25,18 +26,9 @@ export default function Dashboard() {
         </Head>
 
         <main>
-<<<<<<< HEAD
-            <div className='Profile'>
-                
-                <Profile/>
-                <Trips/>
-            </div>
-            
-            
-=======
             <Profile/>
+            <Trips/>
             <Trending/>
->>>>>>> account-bar
         </main>
         </>
     )

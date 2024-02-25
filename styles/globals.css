@@ -51,12 +51,6 @@ a {
   padding: 0.5rem;
 }
 
-<<<<<<< HEAD
-.Trip-Container {
-  display: flex;
-  width: 50%;
-}
-=======
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
 
 :root {
@@ -187,4 +181,3 @@ body {
   
 }
 
->>>>>>> account-bar
