@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import useFirebaseAuth from '../firebase/auth';
 import router from 'next/router';
 
+
 export default function Dashboard() {
     const {authUser, isLoading} = useAuth();
     useEffect(() => {
@@ -24,6 +25,7 @@ export default function Dashboard() {
         </Head>
 
         <main>
+<<<<<<< HEAD
             <div className='Profile'>
                 
                 <Profile/>
@@ -31,6 +33,10 @@ export default function Dashboard() {
             </div>
             
             
+=======
+            <Profile/>
+            <Trending/>
+>>>>>>> account-bar
         </main>
         </>
     )
