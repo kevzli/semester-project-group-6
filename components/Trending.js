@@ -4,6 +4,7 @@ import { ref, getDatabase, onValue, orderByChild, equalTo } from "firebase/datab
 import { db } from "../firebase/firebase";
 import { useAuth } from "../firebase/auth";
 import TripStockPhoto from "../public/trip-stock-photo.jpg"
+import Link from 'next/link'
 
 export default function Trending() {
   const { authUser } =  useAuth();
@@ -55,7 +56,9 @@ export default function Trending() {
                 <span>End: {trip.end_date}</span>
               </div>
             </div>
-            <button className={styles.cardButton}>Enter</button>
+            <Link href={`/ActivityList/${trip.tripId}`}>
+              <button className={styles.cardButton}>Enter</button>
+            </Link>
           </div>
         ))}
       </div>
