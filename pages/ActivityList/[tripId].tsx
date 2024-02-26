@@ -9,7 +9,22 @@ import { db } from '../../firebase/firebase';
 
 export const ActivityList: React.FC = () => {
   const router = useRouter();
-  const [curTripData, setTripData] = useState(null);
+  const {tripId} = router.query;
+  const [curTripData, setTripData] = useState<TripCardData | null>(null);
+
+  type Participant = {
+    name: string;
+    imageUrl: string;
+  };
+
+
+  type TripCardData = {
+    title: string;
+    startDate: string;
+    endDate: string;
+    imageUrl: string;
+    participants: Participant[];
+  };
 
   type ActivityCardData = {
     id: number;
@@ -18,25 +33,16 @@ export const ActivityList: React.FC = () => {
     imageUrl: string;
   };
 
-  const currentTripData = {
-    id: 1,
-    title: 'Activity 3',
-    dateRange: 'September 10 - 12',
-    imageUrl: 'f1.png', // Replace with the actual image path
-    participants: [
-      { name: 'Andrew2', imageUrl: 'f1.png' },
-      { name: 'Andrew', imageUrl: 'f1.png' }
-    ]
-  };
 
   useEffect(() => {
-    const { tripId } = router.query;
     const tripDatabaseRef = ref(db, "trips/" + tripId);
     const fetchTripData = async () => {
       try {
         const tripSnapshot = await get(tripDatabaseRef);
         if (tripSnapshot.exists()) {
           setTripData(tripSnapshot.val());
+          
+
         } else {
           console.error(`Trip with ID ${tripId} not found.`);
         }
@@ -47,9 +53,9 @@ export const ActivityList: React.FC = () => {
 
     if (tripId) {
       fetchTripData();
-      // Fetch activities or other data related to the trip as needed
     }
-  }, [router.query.tripId]); // Add router.query.tripId to the dependency array
+    console.log(curTripData)
+  }, [tripId]); // Add router.query.tripId to the dependency array
 
   const [activities, setActivities] = useState<ActivityCardData[]>([currentTripData]);
 
@@ -74,7 +80,7 @@ export const ActivityList: React.FC = () => {
 
   return (
     <div className={styles.activityList}>
-      <TripCard key={currentTripData.id} {...currentTripData} />
+      <TripCard key={tripId?.toString()} {...curTripData} />
       <button className={styles.addButton} onClick={addNewActivity}>
         +
       </button>
