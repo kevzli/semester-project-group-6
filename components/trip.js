@@ -12,6 +12,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
 import { ref, getDatabase, push } from "firebase/database";
 import { auth } from "../firebase/firebase";
 import { useAuth } from "../firebase/auth";
+import stockPhoto from "../public/f1.png"
 
 export default function Trips() {
   const [tripTitle, setTripTitle] = useState("");
@@ -45,6 +46,10 @@ export default function Trips() {
       start_date: startDateObj,
       end_date: endDateObj,
       trip_dest: tripDestination,
+      participants: [{
+        id: authUser.uid,
+        ImageURL: stockPhoto.src
+      }]
     });
 
     setTripTitle("");

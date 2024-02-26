@@ -10,20 +10,21 @@ import { db } from '../../firebase/firebase';
 export const ActivityList: React.FC = () => {
   const router = useRouter();
   const {tripId} = router.query;
-  const [curTripData, setTripData] = useState<TripCardData | null>(null);
+  const [curTripData, setTripData] = useState<TripCardData| null>();
 
   type Participant = {
-    name: string;
-    imageUrl: string;
+    imageURL: string;
+    id: string;
   };
 
 
   type TripCardData = {
-    title: string;
-    startDate: string;
-    endDate: string;
-    imageUrl: string;
+    trip_name: string;
+    trip_owner: string;
+    start_date: string;
+    end_date: string;
     participants: Participant[];
+
   };
 
   type ActivityCardData = {
@@ -54,10 +55,11 @@ export const ActivityList: React.FC = () => {
     if (tripId) {
       fetchTripData();
     }
-    console.log(curTripData)
+    console.log(curTripData);
+    console.log("above")
   }, [tripId]); // Add router.query.tripId to the dependency array
 
-  const [activities, setActivities] = useState<ActivityCardData[]>([currentTripData]);
+  const [activities, setActivities] = useState<ActivityCardData[]>([]);
 
   const placeholderData = {
     id: 0,
@@ -80,7 +82,9 @@ export const ActivityList: React.FC = () => {
 
   return (
     <div className={styles.activityList}>
-      <TripCard key={tripId?.toString()} {...curTripData} />
+      {curTripData && 
+        <TripCard key={tripId?.toString()} {...curTripData} />
+      }
       <button className={styles.addButton} onClick={addNewActivity}>
         +
       </button>
