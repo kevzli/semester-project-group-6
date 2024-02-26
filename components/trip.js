@@ -27,16 +27,11 @@ export default function Trips() {
     setTripModal(!isTripModalOpen);
   };
 
-  const toggleStartDate = () => {
-    setStartDateOpen(!startDateOpen);
-  };
-
   const handleAddTrip = () => {
     if (!tripTitle.trim()) {
       alert("Please enter a valid trip title");
       return;
     }
-
 
     const startDateObj = startDate.format("YYYY-MM-DD");
     const endDateObj = startDate.format("YYYY-MM-DD");
@@ -46,15 +41,16 @@ export default function Trips() {
     // Use the push method to generate a unique key for the new trip
     const newTripRef = push(tripDatabaseRef, {
       trip_name: tripTitle,
-      trip_owner: authUser,
+      trip_owner: authUser.uid,
       start_date: startDateObj,
       end_date: endDateObj,
       trip_dest: tripDestination,
     });
 
-    console.log(startDate);
     setTripTitle("");
     setTripModal(false);
+    setstartDate(null)
+    setEndDate(null)
   };
 
   return (
