@@ -1,6 +1,7 @@
-// This is the React component file
 import React from 'react';
 import styles from './Trending.module.css';
+import { ref, getDatabase, push, } from "firebase/database";
+import {db} from '../firebase/firebase'
 
 const trends = [
   {
@@ -37,6 +38,7 @@ const trends = [
   // Add as many as you like
 ];
 
+const tripDatabaseRef = ref(db, "trips/");
 
 const Trending = () => {
   return (

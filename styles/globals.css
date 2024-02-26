@@ -181,3 +181,7 @@ body {
   
 }
 
+.Trip-Container {
+  display: flex;
+  flex-direction: column;
+}

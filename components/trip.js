@@ -1,9 +1,13 @@
 import { React, useEffect, useState } from "react";
-import { Dialog, DialogTitle, Button } from "@mui/material";
 import {
-  LocalizationProvider,
-  DateCalendar,
-} from "@mui/x-date-pickers-pro";
+  Dialog,
+  DialogTitle,
+  Button,
+  InputLabel,
+  TextField,
+} from "@mui/material";
+import { LocalizationProvider, DateCalendar } from "@mui/x-date-pickers-pro";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers-pro/AdapterDayjs";
 import { ref, getDatabase, push } from "firebase/database";
 import { auth } from "../firebase/firebase";
@@ -11,10 +15,10 @@ import { useAuth } from "../firebase/auth";
 
 export default function Trips() {
   const [tripTitle, setTripTitle] = useState("");
-  // const [notes, setNotes] = useState([]);
-  // const [selectedNote, setSelectedNote] = useState(null);
+  const [tripDestination, setTripDestination] = useState("");
   const [isTripModalOpen, setTripModal] = useState(false);
-  const [tripDates, setTripDates] = useState(null);
+  const [startDate, setstartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
   const { authUser } = useAuth();
   const db = getDatabase();
@@ -23,47 +27,84 @@ export default function Trips() {
     setTripModal(!isTripModalOpen);
   };
 
+  const toggleStartDate = () => {
+    setStartDateOpen(!startDateOpen);
+  };
+
   const handleAddTrip = () => {
     if (!tripTitle.trim()) {
       alert("Please enter a valid trip title");
       return;
     }
 
+
+    const startDateObj = startDate.format("YYYY-MM-DD");
+    const endDateObj = startDate.format("YYYY-MM-DD");
+
+    console.log(startDateObj);
+
     // Use the push method to generate a unique key for the new trip
     const newTripRef = push(tripDatabaseRef, {
       trip_name: tripTitle,
       trip_owner: authUser,
+      start_date: startDateObj,
+      end_date: endDateObj,
+      trip_dest: tripDestination,
     });
-    console.log(tripDates);
+
+    console.log(startDate);
     setTripTitle("");
     setTripModal(false);
   };
 
   return (
     <>
-      <button onClick={openTripModal}>Add Trip</button>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <Button variant="outlined" onClick={openTripModal}>
+          Add Trip
+        </Button>
 
-      <Dialog open={isTripModalOpen} onClose={openTripModal} className>
-        <DialogTitle> Create New Trip</DialogTitle>
-        <div className="Trip-Container">
-          <input
-            value={tripTitle}
-            onChange={(e) => setTripTitle(e.target.value)}
-            placeholder="Trip Title"
-            className="trip-title-input"
-          />
-          <LocalizationProvider dateAdapter= {AdapterDayjs}>
-            <DateCalendar
-              value={tripDates}
-              onChange={(newValue) => setTripDates(newValue)}
+        <Dialog open={isTripModalOpen} onClose={openTripModal}>
+          <DialogTitle> Create New Trip</DialogTitle>
+          <div className="Trip-Container">
+            <input
+              value={tripTitle}
+              onChange={(e) => setTripTitle(e.target.value)}
+              placeholder="Trip Title"
+              className="trip-title-input"
             />
-          </LocalizationProvider>
+            <DatePicker
+              value={startDate}
+              closeOnSelect={true}
+              label="Start Date"
+              onChange={(newValue) => {
+                setstartDate(newValue);
+              }}
+            />
+            <DatePicker
+              value={endDate}
+              closeOnSelect={true}
+              label="End Date"
+              onChange={(newValue) => {
+                setEndDate(newValue);
+              }}
+            />
 
-          <Button variant="contained" size="large" onClick={handleAddTrip}>
-            Add Trip
-          </Button>
-        </div>
-      </Dialog>
+            <TextField
+              label="Destination"
+              variant="filled"
+              value={tripDestination}
+              onChange={(e) => {
+                setTripDestination(e.target.value);
+              }}
+            />
+
+            <Button variant="contained" size="large" onClick={handleAddTrip}>
+              Add Trip
+            </Button>
+          </div>
+        </Dialog>
+      </LocalizationProvider>
     </>
   );
 }
