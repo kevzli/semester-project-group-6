@@ -1,0 +1,32 @@
+.activityCard {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .activityImage {
+    width: 100%;
+    /* Adjust height accordingly if necessary */
+    height: auto;
+    object-fit: cover; /* This will cover the area of the div without stretching the image */
+  }
+  
+  .activityInfo {
+    padding: 8px; /* Adjust padding as necessary */
+    background-color: white; /* Or any color as per the design */
+  }
+  
+  .activityTitle {
+    font-size: 1.2em; /* Adjust font size as necessary */
+    margin: 0;
+    color: #333; /* Adjust font color as necessary */
+  }
+  
+  .activityDate {
+    font-size: 1em; /* Adjust font size as necessary */
+    margin: 0;
+    color: #666; /* Adjust font color as necessary */
+  }
+  

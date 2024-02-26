@@ -1,0 +1,50 @@
+/* TripCard.module.css */
+.tripCard {
+    width: 90%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+  }
+  
+  .tripImage {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    height: 150px; /* Adjust height as needed */
+  }
+  
+  .tripInfo {
+    padding: 1rem;
+    background: #fff; /* Assuming a white background for the text info */
+    position: relative;
+  }
+  
+  .tripTitle {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .tripDate {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .participants {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    right: 1rem;
+    bottom: -1rem;
+  }
+  
+  .participant {
+    width: 50px; /* Adjust as needed */
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #fff; /* White border to create overlap effect */
+    margin-left: -10px;
+  }
+
+  

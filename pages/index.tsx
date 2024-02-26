@@ -41,15 +41,12 @@ export default function Home() {
   };
   
   return(
-    <>
-      
+    <> 
         <Head>
           <title>Tripify</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
      
-      
-
       <main>
         {/* Hero section */}
         <div className={styles.container}>
