@@ -1,18 +1,21 @@
 .activityCard {
+    width: 80%;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 10px;
   }
   
-  .activityImage {
+  .activityImage{
     width: 100%;
-    /* Adjust height accordingly if necessary */
-    height: auto;
-    object-fit: cover; /* This will cover the area of the div without stretching the image */
+    display: block;
+    object-fit: cover;
+    height: 80px; /* Adjust height as needed */
   }
-  
+
+
   .activityInfo {
     padding: 8px; /* Adjust padding as necessary */
     background-color: white; /* Or any color as per the design */

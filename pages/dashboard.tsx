@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
-import Profile from '../components/profile';
+import ProfileSidebar from '../components/profile';
 import Trips from '../components/trip'
 import useAuth from '../firebase/auth'
 import { useEffect } from 'react';
@@ -26,7 +26,7 @@ export default function Dashboard() {
         </Head>
 
         <main>
-            <Profile/>
+            <ProfileSidebar/>
             <Trips/>
             <Trending/>
         </main>
