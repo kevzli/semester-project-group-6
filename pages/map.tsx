@@ -92,19 +92,20 @@ export default function Map() {
               />
 
               <MarkerClusterer>
-                {(clusterer) =>
-                  houses.map((house) => (
-                    <Marker
-                      key={house.lat}
-                      position={house}
-                      clusterer={clusterer}
-                      onClick={() => {
-                        fetchDirections(house);
-                      }}
-                    />
-                  ))
-                }
+                {clusterer => (
+                  <>
+                    {houses.map((house, index) => (
+                      <Marker
+                        key={index}
+                        position={house}
+                        clusterer={clusterer}
+                        onClick={() => fetchDirections(house)}
+                      />
+                    ))}
+                  </>
+                )}
               </MarkerClusterer>
+
               <Circle center={office} radius={15000} options={closeOptions} />
               <Circle center={office} radius={30000} options={middleOptions} />
               <Circle center={office} radius={45000} options={farOptions} />
