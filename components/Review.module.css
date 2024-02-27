@@ -48,3 +48,9 @@
 .reviewCount {
   font-size: 0.875rem; /* Adjust size as needed */
 }
+
+.yelpIcon {
+  width: 70px;
+  height: auto;
+
+}
