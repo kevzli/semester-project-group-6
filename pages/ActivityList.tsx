@@ -1,6 +1,5 @@
-// Another .tsx file where you use the TripCard component
 import React, { useState } from 'react';
-import TripCard from '../components/TripCard';
+//import TripCard from '../components/TripCard';
 import ActivityCard from '../components/ActivityCard';
 import Modal from '../components/Modal'; 
 import styles from './ActivityList.module.css';
@@ -76,7 +75,7 @@ export const ActivityList: React.FC = () => {
   return (
     <div className={styles.activityList}>
 
-      <TripCard {...currentTripData} />
+      {/* <TripCard trip_dest={''} {...currentTripData} /> */}
       <button className={styles.addButton} onClick={handleAddClick}>
         +
       </button>
