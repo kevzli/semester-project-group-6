@@ -1,7 +1,7 @@
 // TripCard.tsx
 import React from 'react';
 import styles from './TripCard.module.css';
-import stockImage from '../public/f1.png';
+import stockImage from '../public/a1.png';
 
 
 type Participant = {

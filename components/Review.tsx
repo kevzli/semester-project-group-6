@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Review.module.css';
+import Image from 'next/image';
 
 
 interface ReviewProps {
@@ -26,7 +27,7 @@ const stars = Array.from({ length: 5 }, (_, index) => (
         <h2 className={styles.title}>{title}</h2>
         <div className={styles.rating}>
             <div className={styles.stars}>{stars}</div>
-            <img src="/yelp.svg" alt="Yelp" className={styles.yelpIcon} />
+            <Image src="/yelp.svg" alt="Yelp" className={styles.yelpIcon} />
         </div>
         <div className={styles.reviewCount}>Based on {reviewCount} reviews</div>
         </div>
