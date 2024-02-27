@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TripCard from '../../components/TripCard';
 import ActivityCard from '../../components/ActivityCard';
 import { useRouter } from 'next/router';
-import styles from './ActivityList.module.css';
+import styles from '../ActivityList.module.css';
 import { useAuth } from "../../firebase/auth";
 import { ref, getDatabase, push, get, orderByChild, child } from "firebase/database";
 import { db } from '../../firebase/firebase';

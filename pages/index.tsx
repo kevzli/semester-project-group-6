@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
 import PurpleImage from '../public/purple.png';
-import HomeImage from '../public/home.jpg';
+import HomeImage from '../public/Home.jpg';
 import { useLoadScript } from "@react-google-maps/api";
 import Map from "./map";
 import styles from './Home.module.css';
