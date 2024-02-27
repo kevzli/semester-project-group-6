@@ -21,19 +21,19 @@ export default function Distance({ leg }: DistanceProps) {
     return (
     <div>
       <p>
-        This home is <span className="highlight">{leg.distance.text}</span> away
-        from your office. That would take{" "}
+        This activity is <span className="highlight">{leg.distance.text}</span> away
+        from your place. That would take{" "}
         <span className="highlight">{leg.duration.text}</span> each direction.
       </p>
   
-      <p>
+      {/* <p>
         That&apos;s <span className="highlight">{days} days</span> in your car each
         year at a cost of{" "}
         <span className="highlight">
           ${new Intl.NumberFormat().format(cost)}
         </span>
         .
-      </p>
+      </p> */}
     </div>
   );
 }
