@@ -1,0 +1,50 @@
+.container {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0; /* Grey background */
+  padding: 16px;
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+.image {
+  width: 80px; /* Set the image size */
+  height: auto;
+  margin-right: 16px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.stars {
+  color: #ffbf00; /* Gold color for stars */
+  font-size: 1rem; /* Adjust size as needed */
+  margin-right: 8px;
+}
+
+.filledStar {
+  /* Styles for filled star */
+}
+
+.emptyStar {
+  color: #ccc; /* Grey color for empty stars */
+}
+
+.reviewCount {
+  font-size: 0.875rem; /* Adjust size as needed */
+}

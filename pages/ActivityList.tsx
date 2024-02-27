@@ -20,13 +20,14 @@ const defaultFormData = {
 }
 
 const currentTripData = {
-  id: 1,
-  title: 'Activity 3',
-  dateRange: 'September 10 - 12',
-  imageUrl: 'f1.png', // Replace with actual image path
+
+  trip_name: "St.Louis",
+  trip_owner: "Shawn",
+  start_date: "12/3/2024",
+  end_date: "12/4/2024",
   participants: [
-    { name: 'Andrew2', imageUrl: 'f1.png' }, // Replace with actual image paths
-    { name: 'Andrew', imageUrl: 'f1.png' }
+    { name: 'Andrew2', id: "1", imageURL: 'f1.png' },
+    { name: 'Andrew', id: "2", imageURL: 'f1.png' }
   ]
 };
 
@@ -36,7 +37,7 @@ export const ActivityList: React.FC = () => {
   const [formData, setFormData] = useState(defaultFormData);
   const [showModal, setShowModal] = useState(false);
   const [activities, setActivities] = useState<ActivityCardData[]>([
-    currentTripData
+ 
   ]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,8 +75,8 @@ export const ActivityList: React.FC = () => {
 
   return (
     <div className={styles.activityList}>
-      <TripCard key={currentTripData.id} {...currentTripData} />
-      
+
+      <TripCard {...currentTripData} />
       <button className={styles.addButton} onClick={handleAddClick}>
         +
       </button>
