@@ -1,7 +1,10 @@
 const express = require("express");
 const fetch = require("node-fetch");
+const cors = require("cors")
 const app = express();
 const PORT = 3001;
+
+app.use(cors())
 
 app.get("/search-yelp", async (req, res) => {
   const apiKey =
@@ -27,6 +30,7 @@ app.get("/search-yelp", async (req, res) => {
     console.log("success")
     console.log(data);
     res.json(data);
+    return res;
   } catch (error) {
     console.error(error);
     res.status(500).send("An error occurred");
