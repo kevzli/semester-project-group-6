@@ -5,6 +5,7 @@ import { db } from "../firebase/firebase";
 import { useAuth } from "../firebase/auth";
 import TripStockPhoto from "../public/trip-stock-photo.jpg"
 import Link from 'next/link'
+import Image from 'next/image';
 
 export default function Trending() {
   const { authUser } =  useAuth();
@@ -45,8 +46,8 @@ export default function Trending() {
         {userTrips.map((trip) => (
           <div key={trip.tripId} className={styles.card}>
             <div className={styles.cardHeader}>
-              <img src={TripStockPhoto.src} alt={trip.trip_name} className={styles.cardImg} />
-              <h3 className={styles.cardTitle}>{trip.trip_name}</h3>
+              <Image src={TripStockPhoto} alt={trip.trip_name} className={styles.cardImg} />
+              <h3 className={styles.cardTitle}>{trip.name}</h3>
               <p className={styles.cardLocation}>{trip.location}</p>
             </div>
             <div className={styles.cardBody}>

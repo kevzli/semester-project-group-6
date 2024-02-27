@@ -31,6 +31,9 @@ export default function Dashboard() {
             <Trips/>
             <Trending/>
             <Chat/>
+            <Link href={'/map'}>
+              <button>Open Maps</button>
+            </Link>
         </main>
         </>
     )
