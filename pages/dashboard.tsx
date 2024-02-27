@@ -30,7 +30,6 @@ export default function Dashboard() {
             <Profile/>
             <Trips/>
             <Trending/>
-            <Chat/>
             <Link href={'/map'}>
               <button>Open Maps</button>
             </Link>

@@ -76,7 +76,7 @@ export const ActivityList: React.FC = () => {
   return (
     <div className={styles.activityList}>
 
-      <TripCard {...currentTripData} />
+      <TripCard trip_dest={''} {...currentTripData} />
       <button className={styles.addButton} onClick={handleAddClick}>
         +
       </button>
