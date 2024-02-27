@@ -2,6 +2,7 @@
 import React from 'react';
 import styles from './TripCard.module.css';
 import stockImage from '../public/a1.png';
+import Image from 'next/image';
 
 
 type Participant = {
@@ -29,7 +30,9 @@ const TripCard: React.FC<TripCardData> = ({ trip_name, trip_owner, start_date, e
         <p className={styles.tripDate}>{start_date} - {end_date}</p>
         <div className={styles.participants}>
           {participants.map((participant, index) => (
-            <img key={index} src={stockImage.src} alt={participant.id} className={styles.participant} />
+            <Image key={index} src={stockImage.src} alt={participant.id} className={styles.participant} width={400}
+            height={150} 
+            layout="responsive"/>
           ))}
         </div>
       </div>

@@ -22,7 +22,7 @@ const stars = Array.from({ length: 5 }, (_, index) => (
 
     return (
     <div className={styles.container}>
-        <img src={imageUrl} alt={title} className={styles.image} />
+        <Image src={imageUrl} alt={title} className={styles.image} />
         <div className={styles.content}>
         <h2 className={styles.title}>{title}</h2>
         <div className={styles.rating}>
