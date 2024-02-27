@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import useFirebaseAuth from '../firebase/auth';
 import router from 'next/router';
 import Trending from '../components/Trending'
+import Chat from '../components/Chat';
 
 
 export default function Dashboard() {
@@ -29,6 +30,7 @@ export default function Dashboard() {
             <Profile/>
             <Trips/>
             <Trending/>
+            <Chat/>
         </main>
         </>
     )
