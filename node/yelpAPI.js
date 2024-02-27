@@ -1,0 +1,36 @@
+const express = require("express");
+const fetch = require("node-fetch");
+const app = express();
+const PORT = 3001;
+
+app.get("/search-yelp", async (req, res) => {
+  const apiKey =
+    "nyP-ph8WigzME5C6Yglre7YnuObZvrrTIwnnuq8elph9qYBpP-xdSRe6qxbF_GxrSYRngSJxfcnjuX1nwHQykIzgykJ5F9m8xn55qH-GjH5mnDlNp4l34UzHC1jdZXYx";
+  const url = `https://api.yelp.com/v3/businesses/search?location=new%20york%20city&term=${req.query.term}&sort_by=best_match&limit=10`;
+  console.log("here")
+
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+    });
+
+    if (!response.ok) {
+      console.log("error")
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log("success")
+    console.log(data);
+    res.json(data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("An error occurred");
+  }
+});
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

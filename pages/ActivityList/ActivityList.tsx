@@ -1,8 +1,8 @@
 // Another .tsx file where you use the TripCard component
 import React, { useState } from 'react';
-import TripCard from '../components/TripCard';
-import ActivityCard from '../components/ActivityCard';
-import Modal from '../components/Modal'; 
+import TripCard from '../../components/TripCard';
+import ActivityCard from '../../components/ActivityCard';
+import Modal from '../../components/Modal'; 
 import styles from './ActivityList.module.css';
 
 

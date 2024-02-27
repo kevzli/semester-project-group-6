@@ -48,6 +48,8 @@
   .cardInfo {
     margin: 1rem 0;
     color: #333; /* Example color - replace with your own variable or color code */
+    display: flex;
+    flex-direction: column;
   }
   
   .cardPricing {

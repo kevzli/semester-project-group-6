@@ -28,33 +28,32 @@ const SearchBar = ({ trip_destination}: Props) => {
     }));
   };
 
-  const searchYelp = () => {
-    const apiKey = 'nyP-ph8WigzME5C6Yglre7YnuObZvrrTIwnnuq8elph9qYBpP-xdSRe6qxbF_GxrSYRngSJxfcnjuX1nwHQykIzgykJ5F9m8xn55qH-GjH5mnDlNp4l34UzHC1jdZXYx';
+  const searchYelp = async () => {
+    try {
+      const response = await fetch(`http://localhost:3001/search-yelp?term=${searchTerm}`, {
+        method: "GET",
+      });
   
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${apiKey}`
+      if (!response.ok) {
+        console.log("Error:", response.statusText);
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
-    };
   
-    fetch(
-      `https://api.yelp.com/v3/businesses/search?location=new%20york%20city&term=${searchTerm}&sort_by=best_match&limit=10`,
-      options
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
+      const data = await response.json();
+      console.log("Data:", data); // Log the received JSON data
+  
+      // Make sure the structure of data matches your expectations
+      if (data && data.businesses) {
         setSearchResults(mapApiResponseToSearchResults(data.businesses));
-      })
-      .catch((err) => console.error(err));
+      } else {
+        console.error("Invalid data structure:", data);
+      }
+    } catch (error) {
+      console.error("Fetch Error:", error);
+    }
   };
+  
+
   
   return (
     <>

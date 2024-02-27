@@ -45,14 +45,14 @@ export default function Trending() {
         {userTrips.map((trip) => (
           <div key={trip.tripId} className={styles.card}>
             <div className={styles.cardHeader}>
-              <img src={TripStockPhoto} alt={trip.trip_name} className={styles.cardImg} />
-              <h3 className={styles.cardTitle}>{trip.name}</h3>
+              <img src={TripStockPhoto.src} alt={trip.trip_name} className={styles.cardImg} />
+              <h3 className={styles.cardTitle}>{trip.trip_name}</h3>
               <p className={styles.cardLocation}>{trip.location}</p>
             </div>
             <div className={styles.cardBody}>
               <div className={styles.cardInfo}>
-                <span>{trip.trip_dest}</span>
-                <span>Start Date: {trip.start_date} Places</span>
+                <span>Destination: {trip.trip_dest}</span>
+                <span>Start Date: {trip.start_date}</span>
                 <span>End: {trip.end_date}</span>
               </div>
             </div>
