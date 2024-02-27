@@ -12,11 +12,13 @@ type Participant = {
 type TripCardData = {
   trip_name: string;
   trip_owner: string;
+  trip_dest: string;
   start_date: string;
   end_date: string;
   participants: Participant[];
 
 };
+
 
 const TripCard: React.FC<TripCardData> = ({ trip_name, trip_owner, start_date, end_date, participants}) => {
   return (
