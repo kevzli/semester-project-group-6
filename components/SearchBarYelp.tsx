@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, TextField } from "@mui/material";
+import Review from "./Review";
 
 
 
@@ -45,6 +46,7 @@ const SearchBar = ({ trip_destination}: Props) => {
       // Make sure the structure of data matches your expectations
       if (data && data.businesses) {
         setSearchResults(mapApiResponseToSearchResults(data.businesses));
+        console.log(searchResults);
       } else {
         console.error("Invalid data structure:", data);
       }
@@ -67,7 +69,16 @@ const SearchBar = ({ trip_destination}: Props) => {
         }}
       />
       <Button variant="contained" onClick={searchYelp}> Button </Button>
-      
+      {searchResults.map((result, index) => (
+        <Review
+          key={index}
+          title={result.name}
+          rating={parseFloat(result.rating)}
+          reviewCount={result.review_count}
+          imageUrl={result.image_url}
+          url = {result.url}
+        />
+      ))}
 
     </>
   );

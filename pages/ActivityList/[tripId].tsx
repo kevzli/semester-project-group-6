@@ -87,7 +87,7 @@ export const ActivityList: React.FC = () => {
   const placeholdersCount = Math.max(0, 4 - activities.length);
 
   return (
-    <div className={styles.activityList}>
+    <div className={styles.Container}>
       {curTripData && 
         <TripCard key={tripId?.toString()} {...curTripData} />
       }
@@ -96,12 +96,15 @@ export const ActivityList: React.FC = () => {
       <button className={styles.addButton} onClick={activityModal}>
         +
       </button>
-      {activities.map(activity => (
-        <ActivityCard key={activity.id} {...activity} />
-      ))}
-      {[...Array(placeholdersCount)].map((_, index) => (
-        <div key={`placeholder-${index}`} className={styles.placeholder} />
-      ))}
+      
+        {activities.map(activity => (
+          <ActivityCard key={activity.id} {...activity} />
+        ))}
+        {[...Array(placeholdersCount)].map((_, index) => (
+          <div key={`placeholder-${index}`} className={styles.placeholder} />
+        ))}
+      
+      
     </div>
   );
 };

@@ -16,6 +16,7 @@
     "@reach/combobox": "^0.16.5",
     "@react-google-maps/api": "^2.7.0",
     "caniuse-lite": "^1.0.30001585",
+    "cors": "^2.8.5",
     "dayjs": "^1.11.10",
     "firebase": "^10.8.0",
     "firebase-tools": "^13.2.1",
