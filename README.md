@@ -3,7 +3,7 @@
 ## Team Name: Tripify
 ## Group #: 6
 ## Contributors: Kevin Li, Shawn Zhu, Yurock Heo
-## TA: Johnny
+## TA: Jonny
 
 ## Instructions/Link to access: <insert here>
 
