@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Button, TextField } from "@mui/material";
+import { Button, imageListItemBarClasses, TextField } from "@mui/material";
 import Review from "./Review";
 
 
 
 type Props = {
   trip_destination: string | undefined;
+  trip_id: string;
 }
 
 type SearchResult = {
@@ -13,9 +14,9 @@ type SearchResult = {
   image_url: string;
   url: string;
   review_count: number;
-  rating: string;
+  rating: number;
 } 
-const SearchBar = ({ trip_destination}: Props) => {
+const SearchBar = ({ trip_destination, trip_id}: Props) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   
@@ -72,11 +73,12 @@ const SearchBar = ({ trip_destination}: Props) => {
       {searchResults.map((result, index) => (
         <Review
           key={index}
-          title={result.name}
-          rating={parseFloat(result.rating)}
-          reviewCount={result.review_count}
+          tripId={trip_id}
           imageUrl={result.image_url}
-          url = {result.url}
+          url={result.url}
+          reviewCount = {result.review_count}
+          name = {result.name}
+          rating = {result.rating}
         />
       ))}
 

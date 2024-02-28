@@ -7,35 +7,23 @@ import { useAuth } from "../../firebase/auth";
 import { ref, getDatabase, push, get, orderByChild, child } from "firebase/database";
 import { db } from '../../firebase/firebase';
 import SearchBar from '../../components/SearchBarYelp';
+import {TripCardData, ActivityInfo} from '../../CustomTypes'
 
 export const ActivityList: React.FC = () => {
   const router = useRouter();
-  const {tripId} = router.query;
+  const {tripId} = router.query as {tripId:string}
   const [curTripData, setTripData] = useState<TripCardData>();
   
 
-  type Participant = {
-    imageURL: string;
-    id: string;
-  };
+  
 
-
-  type TripCardData = {
-    trip_name: string;
-    trip_owner: string;
-    trip_dest: string;
-    start_date: string;
-    end_date: string;
-    participants: Participant[];
-
-  };
-
-  type ActivityCardData = {
-    id: number;
-    title: string;
-    dateRange: string;
-    imageUrl: string;
-  };
+  //old dummy data
+  // type ActivityCardData = {
+  //   id: number;
+  //   title: string;
+  //   dateRange: string;
+  //   imageUrl: string;
+  // };
 
 
   useEffect(() => {
@@ -61,7 +49,7 @@ export const ActivityList: React.FC = () => {
     
   }, [tripId]); // Add router.query.tripId to the dependency array
 
-  const [activities, setActivities] = useState<ActivityCardData[]>([]);
+  const [activities, setActivities] = useState<ActivityInfo[]>([]);
 
   const placeholderData = {
     id: 0,
@@ -70,15 +58,16 @@ export const ActivityList: React.FC = () => {
     imageUrl: '', // Placeholder image or leave it empty
   };
 
-  const addNewActivity = () => {
-    const newActivity: ActivityCardData = {
-      id: activities.length + 1,
-      title: `New Activity ${activities.length + 1}`,
-      dateRange: 'New Date Range',
-      imageUrl: 'path-to-new-activity-image.png', // Replace with the actual path
-    };
-    setActivities([...activities, newActivity]);
-  };
+  //dummy data
+  // const addNewActivity = () => {
+  //   const newActivity: ActivityCardData = {
+  //     id: activities.length + 1,
+  //     title: `New Activity ${activities.length + 1}`,
+  //     dateRange: 'New Date Range',
+  //     imageUrl: 'path-to-new-activity-image.png', // Replace with the actual path
+  //   };
+  //   setActivities([...activities, newActivity]);
+  // };
 
   const activityModal = () => {
     
@@ -91,19 +80,15 @@ export const ActivityList: React.FC = () => {
       {curTripData && 
         <TripCard key={tripId?.toString()} {...curTripData} />
       }
-      <SearchBar trip_destination={curTripData?.trip_dest}></SearchBar>
-      
-      <button className={styles.addButton} onClick={activityModal}>
-        +
-      </button>
-      
-        {activities.map(activity => (
-          <ActivityCard key={activity.id} {...activity} />
-        ))}
-        {[...Array(placeholdersCount)].map((_, index) => (
-          <div key={`placeholder-${index}`} className={styles.placeholder} />
-        ))}
-      
+      {curTripData && <SearchBar trip_destination={curTripData.trip_dest} trip_id = {tripId}></SearchBar>}
+        
+      {/* {activities.map(activity => (
+        <ActivityInfo key={activity.id} {...activity} />
+      ))}
+      {[...Array(placeholdersCount)].map((_, index) => (
+        <div key={`placeholder-${index}`} className={styles.placeholder} />
+      ))} */}
+        
       
     </div>
   );
