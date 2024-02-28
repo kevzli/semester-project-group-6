@@ -9,10 +9,9 @@ export type Participant = {
   export type ActivityInfo = {
     name: string;
     rating: number;
-    reviewCount: number;
-    imageUrl: string;
+    review_count: number;
+    image_url: string;
     url: string;
-    tripId: string;
 }
 
 export type TripCardData = {
@@ -22,6 +21,5 @@ export type TripCardData = {
     start_date: string;
     end_date: string;
     participants: Participant[];
-    activties: ActivityInfo[];
-
+    activities: ActivityInfo[];
   };

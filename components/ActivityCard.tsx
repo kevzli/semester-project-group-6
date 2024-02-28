@@ -1,23 +1,22 @@
 import React from 'react';
 import styles from './ActivityCard.module.css';
 import Image from 'next/image';
+import { ActivityInfo } from '../CustomTypes';
 
-type ActivityCardData = {
-  id: number;
-  title: string;
-  dateRange: string;
-  imageUrl: string;
-};
 
-const ActivityCard: React.FC<ActivityCardData> = ({ title, dateRange, imageUrl }) => {
+
+const ActivityCard: React.FC<ActivityInfo> = (activity) => {
+  console.log(activity);
+
   return (
     <div className={styles.activityCard}>
-      <Image src={imageUrl} alt="Activity Location" className={styles.activityImage} width={500}
+      <img src={activity.image_url} alt="Activity Location" className={styles.activityImage} width={500}
       height={300}
-      layout="responsive" />
+       />
       <div className={styles.activityInfo}>
-        <h2 className={styles.activityTitle}>{title}</h2>
-        <p className={styles.activityDate}>{dateRange}</p>
+        some info
+        <h2 className={styles.activityTitle}>{activity.name}</h2>
+        <p className={styles.activityDate}>{activity.url}</p>
       </div>
     </div>
   );

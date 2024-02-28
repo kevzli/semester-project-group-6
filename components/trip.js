@@ -49,7 +49,8 @@ export default function Trips() {
       participants: [{
         id: authUser.uid,
         ImageURL: stockPhoto.src
-      }]
+      }],
+      activities: []
     });
 
     setTripTitle("");
@@ -94,6 +95,7 @@ export default function Trips() {
             <TextField
               label="Destination"
               variant="filled"
+              required= "true"
               value={tripDestination}
               onChange={(e) => {
                 setTripDestination(e.target.value);

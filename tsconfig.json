@@ -17,6 +17,6 @@
     "typeRoots" : ["./node_modules/@types"],
     "types": ["glob"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/trip.js"],
   "exclude": ["node_modules"]
 }

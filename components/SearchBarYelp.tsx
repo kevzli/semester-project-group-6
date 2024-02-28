@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, imageListItemBarClasses, TextField } from "@mui/material";
 import Review from "./Review";
+import {ActivityInfo } from '../CustomTypes'
 
 
 
@@ -9,18 +10,11 @@ type Props = {
   trip_id: string;
 }
 
-type SearchResult = {
-  name: string;
-  image_url: string;
-  url: string;
-  review_count: number;
-  rating: number;
-} 
 const SearchBar = ({ trip_destination, trip_id}: Props) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [searchResults, setSearchResults] = useState<ActivityInfo[]>([]);
   
-  const mapApiResponseToSearchResults = (apiResponse: any): SearchResult[] => {
+  const mapApiResponseToSearchResults = (apiResponse: any): ActivityInfo[] => {
     return apiResponse.map((business: any) => ({
       name: business.name,
       image_url: business.image_url,
@@ -70,15 +64,12 @@ const SearchBar = ({ trip_destination, trip_id}: Props) => {
         }}
       />
       <Button variant="contained" onClick={searchYelp}> Button </Button>
-      {searchResults.map((result, index) => (
+      {searchResults.map((activity, index) => (
         <Review
           key={index}
+          activity={activity}
           tripId={trip_id}
-          imageUrl={result.image_url}
-          url={result.url}
-          reviewCount = {result.review_count}
-          name = {result.name}
-          rating = {result.rating}
+          
         />
       ))}
 

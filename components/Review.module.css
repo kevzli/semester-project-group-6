@@ -69,3 +69,7 @@
   justify-content: center;
   cursor: pointer;
   }
+
+  .button:hover {
+    background-color: rgb(68, 68, 68);
+  }
