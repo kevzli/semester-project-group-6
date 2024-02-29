@@ -26,7 +26,7 @@ const SearchBar = ({ trip_destination, trip_id}: Props) => {
 
   const searchYelp = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/search-yelp?term=${searchTerm}`, {
+      const response = await fetch(`http://localhost:3001/search-yelp?term=${searchTerm}&location=${trip_destination}`, {
         method: "GET",
       });
   
