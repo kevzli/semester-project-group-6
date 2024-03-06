@@ -6,88 +6,90 @@ import { useRouter } from 'next/router';
 import styles from './Sidebar.module.css';
 import { useAuth } from '../firebase/auth';
 import { updateUserProfileImage } from './user.js';
+import {
+  Dialog,
+  DialogTitle,
+  Button,
+  InputLabel,
+  TextField,
+} from "@mui/material";
 
 const ProfileSidebar: React.FC = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const router = useRouter();
   const { authUser, signOut } = useAuth();
   const fileInputRef = useRef<HTMLInputElement>(null);
-
+  const [profileUpload, setProfileUpload] = useState(false);
   const sidebarItems = [
     { name: 'Homepage', href: '/', icon: '🏠' },
-    { name: 'Friends', href: '/friendList', icon: '👫' },
-    { name: 'Trips', href: '/userTrips', icon: '✈️' },
-    // Add more items as needed
+    { name: 'Friends', href: '/friends', icon: '👫' },
+    // Add other sidebar items as needed
   ];
 
   const handleProfileImageClick = () => {
-    fileInputRef.current?.click();
-  };
-
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-
-    if (authUser && authUser['uid']) {
-      updateUserProfileImage(authUser['uid'], file).then(() => {
-        console.log('Profile image updated');
-
-      }).catch(error => {
-        console.error('Error updating profile pic', error);
-      });
-    }
+    setProfileUpload(true)
   };
 
   return (
+    <> 
+    <Dialog open={profileUpload} onClose={() => {
+      setProfileUpload(false)
+    }}>
+          <DialogTitle> Profile Pic Upload</DialogTitle>
+          <div className="Image Upload">
+            <input
+              // value={tripTitle}
+              // onChange={(e) => setTripTitle(e.target.value)}
+              // placeholder="Trip Title"
+              // className="trip-title-input"
+            />
+            </div>
+    </Dialog>
     <div className={styles.profileSidebarContainer}>
-      <input
-        type="file"
-        accept="image/*"
-        ref={fileInputRef}
-        style={{ display: 'none' }}
-        onChange={handleFileChange}
-      />
       <div 
         className={styles.profileImage}
         onMouseEnter={() => setShowSidebar(true)}
-        onClick={handleProfileImageClick}
       >
         <Image
-          src={authUser?.['profilePicture'] || DefUserImg.src}
-          alt={authUser?.['name'] || "User Profile"}
+          src={DefUserImg}
+          alt="User Profile"
           width={50}
           height={50}
         />
       </div>
 
-      {showSidebar && (
-        <div className={`${styles.sidebar} ${showSidebar ? styles.sidebarVisible : ''}`}>
-          <div className={styles.sidebarProfile}>
-            <Image
-              src={authUser?.['profilePicture'] || DefUserImg.src}
-              alt={authUser?.['name'] || "User Profile"}
-              width={50}
-              height={50}
-            />
-            <span className={styles.sidebarProfileName}>{authUser?.['name'] || "New User"}</span>
-          </div>
-          <nav className={styles.sidebarNav}>
-            {sidebarItems.map((item) => (
-              <Link key={item.name} href={item.href} passHref>
-                <a className={`${styles.sidebarNavItem} ${router.pathname === item.href ? styles.sidebarNavItemActive : ''}`}>
-                  <span className={styles.sidebarNavIcon}>{item.icon}</span>
-                  {item.name}
-                </a>
-              </Link>
-            ))}
-          </nav>
-          <span onClick={signOut} className={styles.sidebarNavItem}>
+      <div 
+        className={`${styles.sidebar} ${showSidebar ? styles.sidebarVisible : ''}`}
+        onMouseLeave={() => setShowSidebar(false)}
+      >
+        <div className={styles.sidebarProfile}>
+          <Image
+            src={DefUserImg}
+            alt="Andrew Smith"
+            width={50}
+            height={50}
+            onClick = {handleProfileImageClick}
+          />
+          <span className={styles.sidebarProfileName}>Andrew Smith</span>
+        </div>
+        <nav className={styles.sidebarNav}>
+          {sidebarItems.map((item) => (
+            <Link key={item.name} href={item.href} passHref>
+              <span className={`${styles.sidebarNavItem} ${router.pathname === item.href ? styles.sidebarNavItemActive : ''}`}>
+                <span className={styles.sidebarNavIcon}>{item.icon}</span>
+                {item.name}
+              </span>
+            </Link>
+          ))}
+          <span onClick={() => signOut()} className={styles.sidebarNavItem}>
             <span className={styles.sidebarNavIcon}>🚪</span>
             Logout
           </span>
-        </div>
-      )}
+        </nav>
+      </div>
     </div>
+    </>
+    
   );
 };
 

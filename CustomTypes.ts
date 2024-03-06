@@ -3,8 +3,12 @@ export type Participant = {
     id: string;
   };
 
+export type User = {
+  imageURL: string;
+  id: string;
+  email: string;
+}
 
-  
 
   export type ActivityInfo = {
     name: string;
