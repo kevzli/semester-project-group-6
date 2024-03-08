@@ -5,7 +5,10 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './Sidebar.module.css';
 import { useAuth } from '../firebase/auth';
+import {storage } from '../firebase/firebase'
+import { ref, uploadBytes } from 'firebase/storage';
 import { updateUserProfileImage } from './user.js';
+import { v4 } from 'uuid';
 import {
   Dialog,
   DialogTitle,
@@ -20,6 +23,8 @@ const ProfileSidebar: React.FC = () => {
   const { authUser, signOut } = useAuth();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [profileUpload, setProfileUpload] = useState(false);
+  const [imageUpload, setImageUpload] = useState(null);
+
   const sidebarItems = [
     { name: 'Homepage', href: '/', icon: '🏠' },
     { name: 'Friends', href: '/friends', icon: '👫' },
@@ -30,6 +35,15 @@ const ProfileSidebar: React.FC = () => {
     setProfileUpload(true)
   };
 
+  const uploadImage = () => {
+    if (imageUpload == null){
+      return;
+    };
+    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+    uploadBytes(imageRef, imageUpload).then(() => {
+      alert("Image Uploaded");
+    })
+  }
   return (
     <> 
     <Dialog open={profileUpload} onClose={() => {
@@ -37,12 +51,8 @@ const ProfileSidebar: React.FC = () => {
     }}>
           <DialogTitle> Profile Pic Upload</DialogTitle>
           <div className="Image Upload">
-            <input
-              // value={tripTitle}
-              // onChange={(e) => setTripTitle(e.target.value)}
-              // placeholder="Trip Title"
-              // className="trip-title-input"
-            />
+            <input type = "file" onChange = {(event) => {setImageUpload(event.target.files[0])}}/>
+            <button onClick = {uploadImage}>Upload Image</button>
             </div>
     </Dialog>
     <div className={styles.profileSidebarContainer}>
