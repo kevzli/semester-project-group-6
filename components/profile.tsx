@@ -65,12 +65,12 @@ const ProfileSidebar: React.FC = () => {
         <div className={styles.sidebarProfile}>
           <Image
             src={DefUserImg}
-            alt="Andrew Smith"
+            alt="User Profile"
             width={50}
             height={50}
             onClick = {handleProfileImageClick}
           />
-          <span className={styles.sidebarProfileName}>Andrew Smith</span>
+          <span className={styles.sidebarProfileName}>User ID: {authUser?.uid}</span>
         </div>
         <nav className={styles.sidebarNav}>
           {sidebarItems.map((item) => (
